@@ -204,7 +204,10 @@ def execute_bot(data, obj):
                 else:
                     data.sendMessage("<bot> Oops, gak bisa!")
     except Exception, e:
-        print e    
+        et, ev, tb = sys.exc_info()
+        lineno = tb.tb_lineno
+        fn = tb.tb_frame.f_code.co_filename
+        print "[ERR] %s Line %i - %s"% (fn, lineno, str(e))    
 
 def show_details(data):
     for i in range(0, len(data)):
